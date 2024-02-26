@@ -1,0 +1,68 @@
+\newcommand\frontmatter{%
+\cleardoublepage
+%\@mainmatterfalse
+\pagenumbering{roman}}
+
+\newcommand\mainmatter{%
+\cleardoublepage
+% \@mainmattertrue
+\pagenumbering{arabic}}
+
+\newcommand\backmatter{%
+\if@openright
+\cleardoublepage
+\else
+\clearpage
+\fi
+% \@mainmatterfalse
+}
+
+\newenvironment{enum_short}
+{ \begin{enumerate}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}     }
+{ \end{enumerate}                  } 
+
+%\makeatletter
+%\renewcommand\listoftables{%
+%        \@starttoc{lot}%
+%}
+%\makeatother
+%
+%\makeatletter
+%\renewcommand\listoffigures{%
+%        \@starttoc{lof}%
+%}
+%\makeatother
+
+
+
+
+
+\renewcommand*\chapterheadstartvskip{\vspace*{-1.5cm}}
+
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    %identifierstyle=\color{powderblue},
+    basicstyle=\ttfamily\footnotesize,
+    language=Bash,              % the language of the code
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+

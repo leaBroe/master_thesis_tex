@@ -1,0 +1,38 @@
+\documentclass[11pt, a4paper, bibliography=totoc,listof=totoc]{scrreprt}
+  \include{tex/config/packages}
+  \include{tex/config/commands}
+  \pagestyle{fancy}
+  \fancyhf{}
+  \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
+  \fancyhead[R]{}
+  \fancyhead[L]{\chaptername\ \thechapter\ --\ \leftmark}
+  \rfoot{Seite \thepage}
+  \bibliographystyle{apacite}
+  \input{tex/glossar}
+
+  \begin{document}
+    \frontmatter
+    \input{tex/titelseite}
+    \input{tex/abstract}
+    \tableofcontents
+
+    %\glsaddall
+    %\printglossary[title={Glossar}]
+
+    \mainmatter
+    \input{tex/einleitung}
+    \input{tex/theorie}
+    \input{tex/methoden}
+    \input{tex/resultate}
+    \input{tex/diskussion}
+    \input{tex/fazit}
+
+    \bibliography{bibtex/sources}
+    \listoffigures
+    \listoftables
+    
+    \backmatter
+    \appendix
+    \input{tex/anhang.tex}
+
+  \end{document}
