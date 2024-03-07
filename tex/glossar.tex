@@ -1,9 +1,16 @@
 \makeglossaries
 
-\newglossaryentry{bptt}{
+\newglossaryentry{word_embedding}{
   name=Word Embeddings,
   description={Mapping of words into vectors with real numbers}
 }
+
+\newglossaryentry{tokenization}{
+  name=Tokenization,
+  description={Splitting the text into individual tokens, which are the atomic units of information in a chosen language representation. English NLP models typically use words as tokens. Since proteins do not have a well-defined vocabulary of words, word-level tokenization is not a well-defined option in the case of proteins, which is why subword segmentation is often used}
+}
+
+
 %\newglossaryentry{multilingual}{
 %  name=multilingual,
 %  description={Für mehrere Sprachen einsetzbar. Im Zusammenhang mit Deep Learning wird ein multilinguales Modell oft anhand von mehreren Sprachen trainiert}
