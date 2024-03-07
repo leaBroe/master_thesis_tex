@@ -1,6 +1,8 @@
-\chapter{Literature Review (work title)} \label{theorie}
+\chapter{Sequential Transfer Learning in NLP for Antibody Research} \label{theorie}
 
 % A comprehensive review of existing research relevant to your topic. This section establishes the foundation on which your research is built and identifies gaps your study aims to fill.
+
+The following section explains the theoretical background necessary for the thesis with regard to the biology of antibodies and the functionality of the NLP models used. A basic understanding of machine learning and protein structures is assumed.
 
 \section{Introduction to Antibodies}
 
@@ -13,15 +15,22 @@ Antibodies are Y-shaped proteins that consist of two identical light chains (LCs
 
 % Overview: Introduction to the field of antibody engineering and the role of antibodies in therapeutic applications. Challenges: Discuss the challenges in identifying and pairing heavy and light chains in recombinant antibodies and their implications for therapeutic development.
 
-\section{Deep Learning Methods for Antibodies}
+\section{Deep Learning Methods for Antibody Research}
 
-Deep learning is a branch of machine learning that focuses on algorithms capable of identifying complex patterns in data by transforming low-level inputs (like pixels in an image) into high-level features (such as object shapes). It utilizes artificial neural networks (ANNs) with multiple layers between the input and output, making them "deep". These networks consist of nodes, or neurons, that process inputs and pass the outputs to subsequent layers, gradually extracting more abstract features. In the context of biochemistry, deep learning can start from basic data, like amino acid sequences, and learn to recognize complex biological structures or functions \citep{Graves2020}.
+Deep learning is a branch of machine learning that focuses on algorithms capable of identifying complex patterns in data by transforming low-level inputs (like pixels in an image) into high-level features (such as object shapes). It utilizes artificial neural networks (ANNs) with multiple layers between the input and output, making them "deep". These networks consist of nodes, or neurons, that process inputs and pass the outputs to subsequent layers, gradually extracting more abstract features. In the context of biochemistry, deep learning can start from basic data, like amino acid sequences, and learn to recognize complex biological structures or functions \citep{Graves2020}. NLP models can be effectively used for analyzing amino acid sequences due to the conceptual similarities between proteins and language. Proteins can be represented as strings of 20 amino acid letters, making them a natural fit for many NLP methods. This similarity in representation allows for the application of NLP algorithms to the study of proteins, leveraging the success and promise of NLP methods in other domains \citep{Ofer2021}. NLP methods have been successfully applied to protein sequences for tasks such as predicting protein families or properties. Word embedding models in NLP have been used to extract features of protein sequences and have demonstrated successful applications in protein family classification \citep{Xu2020}. This can be explained by the following similarities between natural language and protein sequences: Like natural language, natural proteins generally consist of reused modular elements that exhibit slight variations and can be rearranged and reassembled in a hierarchical fashion. In this analogy, common protein motifs and domains, which are the basic functional building blocks of proteins, are comparable to words, phrases and sentences in human language. Another similarity between proteins and human language is the completeness of the information. A protein is more than just a sequence of amino acids, it is also a three-dimensional machine with a specific structure and associated function, which is largely determined by the amino acid sequence. From an information-theory perspective, this means that the information of the protein is contained in the protein sequence. However, the analogies between proteins and human language only go so far. We can read and understand human language, but not in the same way as the protein sequence. In addition, most human languages have uniform punctuation and stop words that clearly delineate structures such as words or sentences. There is no clear analogy between the building blocks of languages and those of proteins \citep{Ofer2021}.
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=15cm]{images/protein_representation.png}
+ \caption{\citep{Ofer2021}}
+ \label{protein representation}
+\end{figure}
 
 \section{BERT and Transformers in Bioinformatics}
 
 % BERT Overview: Explain the BERT model (Bidirectional Encoder Representations from Transformers) and its significance in natural language processing (NLP). Adaptation to Bioinformatics: Discuss how BERT and transformer models have been adapted for bioinformatics applications, including examples where they have been used for sequence analysis, protein function prediction, etc.
 
-BERT from \cite{Devlin2019} stands for "Bidirectional Encoder Representations from Transformers" and is based on a bidirectional language model. BERT uses the transformer according to \cite{Vaswani2017} as its architecture. At the time of publication, BERT was able to establish the state of the art in 11 natural language processing tasks \citep{Devlin2019}. The first forms of language modelling in connection with machine learning can be found in \cite{Mikolov2013} in the form of the "skip-gram" model. In the skip-gram model, text or unlabelled data is used to train the probability distribution of the next word based on the previous words in the sentence. This process can then be used to calculate static word vectors, which serve as a starting point for other NLP tasks \citep{Mikolov2013a}. The idea of this unidirectional language model was subsequently used by various other publications and transferred to other architectures such as the Transformer according to \cite{Vaswani2017} \citep{Radford2018ImprovingLU}. In contrast to \cite{Radford2018ImprovingLU}, however, BERT uses a bidirectional language model. Figure 2.1 shows the structure of BERT with pretraining and fine-tuning in graphical form. The language model, or the step known as "pre-training", is trained using two tasks:
+BERT from \cite{Devlin2019} stands for "Bidirectional Encoder Representations from Transformers" and is based on a bidirectional language model. BERT uses the transformer according to \cite{Vaswani2017} as its architecture. At the time of publication, BERT was able to establish the state of the art in 11 natural language processing tasks \citep{Devlin2019}. The first forms of language modelling in connection with machine learning can be found in \cite{Mikolov2013} in the form of the "skip-gram" model. In the skip-gram model, text or unlabelled data is used to train the probability distribution of the next word based on the previous words in the sentence. This process can then be used to calculate static word vectors, which serve as a starting point for other NLP tasks \citep{Mikolov2013a}. The idea of this unidirectional language model was subsequently used by various other publications and transferred to other architectures such as the Transformer according to \cite{Vaswani2017} \citep{Radford2018ImprovingLU}. In contrast to \cite{Radford2018ImprovingLU}, however, BERT uses a bidirectional language model. Figure \ref{bert_overview} shows the structure of BERT with pretraining and fine-tuning in graphical form. The language model, or the step known as "pre-training", is trained using two tasks:
 
 \textit{Masked language modelling}: Since the words of the sentence are processed in parallel in the transformer architecture \cite{Vaswani2017}, individual words must be masked in bidirectional prediction. In the case of BERT, these are replaced with the token "[MASK]". The model is then trained to correctly predict these masked words.
 
@@ -31,7 +40,7 @@ BERT from \cite{Devlin2019} stands for "Bidirectional Encoder Representations fr
  \centering
  \includegraphics[width=15.5cm]{images/bert_architecture.png}
  \caption{BERT Overview \citep{Devlin2019}.}
- \label{phylo_copia}
+ \label{bert_overview}
 \end{figure}
 
 
